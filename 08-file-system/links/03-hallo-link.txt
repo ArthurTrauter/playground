@@ -1,0 +1,1 @@
+/home/arth/dev/fsjs/04-file-system/files/03-hallo.txt
