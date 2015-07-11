@@ -1,0 +1,2 @@
+Diese Textdatei soll nach möglichkeit gepackt
+und wieder geschrieben werden
