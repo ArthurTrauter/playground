@@ -1,0 +1,15 @@
+{
+  "name": "testframeworks",
+  "version": "0.0.0",
+  "entry point": "src/app.js",
+  "test command": "node ./node_modules/mocha/bin/mocha ./mocha-tests/*test.js",
+  "scripts": {
+    "nodeunit-test": "node ./node_modules/nodeunit/bin/nodeunit ./nodeunit/nodeunitTest.js",
+    "mocha-test": "node ./node_modules/mocha/bin/mocha ./mocha-tests/*Test.js"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.1",
+    "mocha": "2.2.5",
+    "nodeunit": "0.9.1"
+  }
+}
