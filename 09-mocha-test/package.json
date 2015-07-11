@@ -1,0 +1,11 @@
+{
+  "name": "09-mocha-test",
+  "version": "0.0.0",
+  "scripts": {
+    "mocha-test": "./node_modules/mocha/bin/mocha ./test/*-test.js"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.1",
+    "mocha": "2.2.5"
+  }
+}
