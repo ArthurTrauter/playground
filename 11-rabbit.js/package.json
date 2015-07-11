@@ -1,0 +1,7 @@
+{
+  "name": "11-rabbit.js",
+  "version": "0.0.0",
+  "dependencies": {
+    "rabbit.js": "0.4.3"
+  }
+}
