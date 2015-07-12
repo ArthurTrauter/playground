@@ -1,0 +1,2 @@
+Dateiname: fileA.txt
+hello world
