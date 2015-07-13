@@ -17,25 +17,28 @@ FindPattern.prototype.addFile = function(filename) {
 };
 
 FindPattern.prototype.find = function() {
-  var self = this;
+  // var self = this;
   var filesDir = __dirname + '/../' + cfg.filesPath;
-  self.files.forEach(function(file) {
-    console.log(filesDir + file);
+  // self.files.forEach(function(file) {
+  this.files.forEach(function(file) {
     fs.readFile(filesDir + file, 'utf8', function(err, content) {
       if (err) {
-        return self.emit('error', err);
+        return this.emit('error', err);
       };
 
-      self.emit('fileread', file);
+      // self.emit('fileread', file);
+      this.emit('fileread', file);
 
       var match = null;
-      if (match = content.match(self.regex)) {
+      // if (match = content.match(self.regex)) {
+      if (match = content.match(this.regex)) {
         match.forEach(function(elem) {
-          self.emit('found', file, elem);
-        });
+          this.emit('found', file, elem);
+          // self.emit('found', file, elem);
+        }.bind(this));
       };
-    });
-  });
+    }.bind(this));
+  }.bind(this));
   return this;
 };
 
