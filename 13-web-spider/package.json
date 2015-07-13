@@ -1,0 +1,9 @@
+{
+  "name": "13-web-spider",
+  "version": "0.0.0",
+  "dependencies": {
+    "mkdirp": "0.5.1",
+    "request": "2.58.0",
+    "slug": "0.9.1"
+  }
+}
