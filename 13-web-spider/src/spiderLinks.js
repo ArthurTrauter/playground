@@ -8,7 +8,7 @@ function spiderLinks(currentUrl, body, nesting, callback) {
   var links = utilities.getPageLinks(currentUrl, body);
 
   function iterate(index) {
-    if (index === link.index) {
+    if (index === links.index) {
       return callback();
     }
     spider(links[index], nesting--, function(err) {

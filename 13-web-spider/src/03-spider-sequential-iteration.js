@@ -2,11 +2,13 @@ var fs = require('fs');
 
 var utilities = require('./utilities');
 var download = require('./download');
-var spiderLinks = require('./spiderLinks');
 var getUrlFromArgs = require('./getUrlFromArgs');
 
-module.exports.spider = function spider(url, nesting, callback) {
-  var filename = utilities.urlToFilename(url);
+var spider = function (url, nesting, callback) {
+  var filename = __dirname + '/../files/';
+  console.log(url);
+  filename += utilities.urlToFilename(url);
+
   fs.readFile(filename, 'utf8', function(err, body) {
     if (err) {
       if (err.code !== 'ENOENT') {
@@ -16,6 +18,7 @@ module.exports.spider = function spider(url, nesting, callback) {
         if (err) {
           return callback(err);
         }
+
         spiderLinks(url, body, nesting, callback);
       });
     }
@@ -23,7 +26,27 @@ module.exports.spider = function spider(url, nesting, callback) {
   });
 };
 
-spider(getUrlFromArgs(), function(err, filename, downloaded) {
+function spiderLinks(currentUrl, body, nesting, callback) {
+  if (nesting === 0) {
+    return process.nextTick(callback);
+  }
+  var links = utilities.getPageLinks(currentUrl, body);
+
+  function iterate(index) {
+    if (index === links.length) {
+      return callback();
+    }
+    spider(links[index], nesting--, function(err) {
+      if (err) {
+        return callback(err);
+      }
+      iterate(index++);
+    });
+  }
+  iterate(0);
+};
+
+spider(getUrlFromArgs(), 10, function(err, filename, downloaded) {
   if (err) {
     return console.log(err);
   }
