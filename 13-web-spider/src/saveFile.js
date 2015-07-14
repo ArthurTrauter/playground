@@ -2,7 +2,7 @@ var fs = require('fs');
 
 var mkdirp = require('mkdirp');
 
-exports = function saveFile(filename, contents, callback) {
+function saveFile(filename, contents, callback) {
   mkdirp(path.dirname(filename), function(err) {
     if (err) {
       return callback(err);
@@ -10,3 +10,5 @@ exports = function saveFile(filename, contents, callback) {
     fs.writeFile(filename, contents, callback);
   });
 };
+
+module.exports = saveFile;

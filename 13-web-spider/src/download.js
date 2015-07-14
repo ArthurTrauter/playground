@@ -2,7 +2,7 @@ var request = require('request');
 
 var saveFile = require('./saveFile');
 
-exports = function download(url, filepath, callback) {
+function download(url, filepath, callback) {
   console.log('Downloading', url);
   request(url, function(err, response, body) {
     if (err) {
@@ -16,4 +16,6 @@ exports = function download(url, filepath, callback) {
       callback(null, body);
     });
   });
-}
+};
+
+module.exports = download;

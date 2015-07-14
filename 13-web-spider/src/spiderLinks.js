@@ -1,7 +1,7 @@
 var utilities = require('./utilities');
 var spider = require('./03-spider-sequential-iteration');
 
-exports = function spiderLinks(currentUrl, body, nesting, callback) {
+function spiderLinks(currentUrl, body, nesting, callback) {
   if (nesting === 0) {
     return process.nextTick(callback);
   }
@@ -20,3 +20,5 @@ exports = function spiderLinks(currentUrl, body, nesting, callback) {
   }
   iterate(0);
 };
+
+module.exports = spiderLinks;

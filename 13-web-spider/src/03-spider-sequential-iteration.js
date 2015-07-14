@@ -5,7 +5,7 @@ var download = require('./download');
 var spiderLinks = require('./spiderLinks');
 var getUrlFromArgs = require('./getUrlFromArgs');
 
-exports = function spider(url, nesting, callback) {
+module.exports.spider = function spider(url, nesting, callback) {
   var filename = utilities.urlToFilename(url);
   fs.readFile(filename, 'utf8', function(err, body) {
     if (err) {

@@ -1,7 +1,7 @@
 // TODO: Einfügen der Funktion in das 03-spider-sequential-iteration Skript
 //       und test der darus resultierenden Funktionalität
 
-exports = function iterateSeries(collection, iteratorCallback, finalCallback) {
+function iterateSeries(collection, iteratorCallback, finalCallback) {
   function iterate(index) {
     if (index === collection.length) {
       return finalCallback();
@@ -12,3 +12,5 @@ exports = function iterateSeries(collection, iteratorCallback, finalCallback) {
 
   iterate(0);
 }
+
+module.exports = iterateSeries;

@@ -5,19 +5,12 @@ var mkdirp = require('mkdirp');
 var request = require('request');
 
 var utilities = require('./utilities');
-
-function getUrlFromArgs() {
-  if (process.argv.length > 2) {
-    return process.argv[2];
-  }
-  console.log('Url Übergabeparameter fehlt');
-  process.exit(1);
-};
+var getUrlFromArgs = require('./getUrlFromArgs');
 
 function spider(url, callback) {
   var filename = __dirname + '/../files/';
   filename += utilities.urlToFilename(url);
-  
+
   fs.stat(filename, function (err, stats) {
     if (err) {
       console.log('Downloading ' + url);
