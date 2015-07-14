@@ -8,7 +8,7 @@ function download(url, filepath, callback) {
     if (err) {
       return callback(err);
     }
-    saveFile(filename, body, function(err) {
+    saveFile(filepath, body, function(err) {
       console.log('Downloaded and saved: ', url);
       if (err) {
         return callback(err);
