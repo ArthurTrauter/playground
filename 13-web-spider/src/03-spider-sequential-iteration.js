@@ -3,6 +3,7 @@ var fs = require('fs');
 var utilities = require('./utilities');
 var download = require('./download');
 var spiderLinks = require('./spiderLinks');
+var getUrlFromArgs = require('./getUrlFromArgs');
 
 exports = function spider(url, nesting, callback) {
   var filename = utilities.urlToFilename(url);
@@ -21,3 +22,13 @@ exports = function spider(url, nesting, callback) {
     spiderLinks(url, body, nesting, callback);
   });
 };
+
+spider(getUrlFromArgs(), function(err, filename, downloaded) {
+  if (err) {
+    return console.log(err);
+  }
+  if (downloaded) {
+    return console.log('Completed the download of "' + filename + '"');
+  }
+  return console.log('"' + filename + '" was allready downloaded');
+});

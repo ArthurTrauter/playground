@@ -19,4 +19,4 @@ exports = function spiderLinks(currentUrl, body, nesting, callback) {
     });
   }
   iterate(0);
-}
+};

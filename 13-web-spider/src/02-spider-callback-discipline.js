@@ -2,14 +2,7 @@ var fs = require('fs');
 
 var download = require('./download');
 var utilities = require('./utilities');
-
-function getUrlFromArgs() {
-  if (process.argv.length > 2) {
-    return process.argv[2];
-  }
-  console.log('Url Übergabeparameter fehlt');
-  process.exit(1);
-};
+var getUrlFromArgs = require('./getUrlFromArgs');
 
 function spider(url, callback) {
   var filename = __dirname + '/../files/';
