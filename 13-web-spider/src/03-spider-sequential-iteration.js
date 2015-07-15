@@ -4,24 +4,26 @@ var utilities = require('./utilities');
 var download = require('./download');
 var getUrlFromArgs = require('./getUrlFromArgs');
 
-var spider = function (url, nesting, callback) {
+var spider = function(url, nesting, callback) {
   var filename = __dirname + '/../files/';
-  console.log(url);
   filename += utilities.urlToFilename(url);
 
   fs.readFile(filename, 'utf8', function(err, body) {
+    console.log('hier0');
     if (err) {
       if (err.code !== 'ENOENT') {
         return callback(err);
       }
-      download(url, filename, function(err) {
+      console.log('hier1');
+      return download(url, filename, function(err) {
         if (err) {
           return callback(err);
         }
-
+        console.log('hier2');
         spiderLinks(url, body, nesting, callback);
       });
     }
+    console.log('hier3');
     spiderLinks(url, body, nesting, callback);
   });
 };
@@ -30,12 +32,16 @@ function spiderLinks(currentUrl, body, nesting, callback) {
   if (nesting === 0) {
     return process.nextTick(callback);
   }
+  // console.log('vor links', currentUrl);
   var links = utilities.getPageLinks(currentUrl, body);
+
+  console.log('links.length: %s', links.length);
 
   function iterate(index) {
     if (index === links.length) {
-      return callback();
+      return callback(null, currentUrl, false);
     }
+    console.log('links[index]', links[index]);
     spider(links[index], nesting--, function(err) {
       if (err) {
         return callback(err);
