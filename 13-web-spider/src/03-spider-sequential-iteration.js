@@ -5,30 +5,32 @@ var download = require('./download');
 var getUrlFromArgs = require('./getUrlFromArgs');
 
 var spider = function(url, nesting, callback) {
+  console.log(' [x] spider', url  );
   var filename = __dirname + '/../files/';
   filename += utilities.urlToFilename(url);
 
   fs.readFile(filename, 'utf8', function(err, body) {
-    console.log('hier0');
+    console.log('hier0', url, body == undefined);
     if (err) {
       if (err.code !== 'ENOENT') {
         return callback(err);
       }
-      console.log('hier1');
-      return download(url, filename, function(err) {
+      console.log('hier1', url, body == undefined);
+      return download(url, filename, function(err, body) {
         if (err) {
           return callback(err);
         }
-        console.log('hier2');
+        console.log('hier2', url, body == undefined);
         spiderLinks(url, body, nesting, callback);
       });
     }
-    console.log('hier3');
+    console.log('hier3', url, body == undefined);
     spiderLinks(url, body, nesting, callback);
   });
 };
 
 function spiderLinks(currentUrl, body, nesting, callback) {
+console.log(' [x] spiderLinks');
   if (nesting === 0) {
     return process.nextTick(callback);
   }
@@ -39,20 +41,21 @@ function spiderLinks(currentUrl, body, nesting, callback) {
 
   function iterate(index) {
     if (index === links.length) {
+      console.log('------------------ FERTIG ------------------');
       return callback(null, currentUrl, false);
     }
-    console.log('links[index]', links[index]);
-    spider(links[index], nesting--, function(err) {
+    console.log('links[index]', links[index], index, nesting);
+    spider(links[index], nesting - 1, function(err) {
       if (err) {
         return callback(err);
       }
-      iterate(index++);
+      iterate(index + 1);
     });
   }
   iterate(0);
 };
 
-spider(getUrlFromArgs(), 10, function(err, filename, downloaded) {
+spider(getUrlFromArgs(), 1, function(err, filename, downloaded) {
   if (err) {
     return console.log(err);
   }
