@@ -4,6 +4,7 @@ var urlResolve = require('url').resolve;
 // var slug = require('slug');
 var path = require('path');
 var cheerio = require('cheerio');
+var S = require('string');
 
 module.exports.urlToFilename = function urlToFilename(url) {
   var parsedUrl = urlParse(url);
@@ -12,7 +13,7 @@ module.exports.urlToFilename = function urlToFilename(url) {
       return !!component;
     })
     .map(function(component) {
-      return component;
+      return S(component).slugify();
       // return slug(component);
     })
     .join('/');
