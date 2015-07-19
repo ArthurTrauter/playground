@@ -17,6 +17,15 @@ var yoNodeTest = require('yo-node-test');
 yoNodeTest('Rainbow');
 ```
 
+## Development
+
+To set a dev Environment in linux you neet do set folowing command
+in the /etc/bash.bashrc:
+
+```sh
+export NODE_ENV=dev
+```
+
 ## License
 
 MIT © [ArthurTrauter]()

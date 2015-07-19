@@ -1,0 +1,11 @@
+Das System muss fähig sein Gewichtsangaben als Node-Modul über entsprechende Methodenaufrufe zu sichern und wieder bereitzustallen.
+
+Das System muss fähig sein Gewichtsangaben als Node-Modul selektiv zu löschen und wahlfrei hinzuzufügen. 
+
+Das System soll fähig sein Gewichstangaben im durch Konfigration vorgegebenen Speicherszenarien zu speichern
+
+Das System muss Speicherszenarien filesystem und nosql-Datenbank unterstützen 
+
+Das System muss Kontextabhängiges Logging (Info, Trace, Debug, All) machen
+
+Das System muss als TDD-System entwickelt werden
