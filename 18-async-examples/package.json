@@ -1,0 +1,39 @@
+{
+  "name": "async-examples",
+  "version": "0.0.0",
+  "description": "some examples for async module",
+  "homepage": "",
+  "repository": "ArthurTrauter/async-examples",
+  "author": {
+    "name": "ArthurTrauter",
+    "email": "arthur.trauter@googlemail.com",
+    "url": ""
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "async"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-jscs": "^1.1.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^0.4.5",
+    "jshint-stylish": "^1.0.0"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async": "1.4.0",
+    "expect": "1.8.0"
+  }
+}
