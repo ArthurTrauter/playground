@@ -2,11 +2,6 @@
   "name": "js-efective",
   "version": "0.0.0",
   "description": "some examples from the book javaScript effektiv",
-  "author": {
-    "name": "ArthurTrauter",
-    "email": "arthur.trauter@googlemail.com",
-    "url": ""
-  },
   "files": [
     "lib"
   ],
