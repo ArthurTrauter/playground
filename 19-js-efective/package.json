@@ -10,5 +10,8 @@
     "start1": "node ./lib/24-example-0.js",
     "start2": "node ./lib/25-example-0.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "async": "1.4.0"
+  }
 }
