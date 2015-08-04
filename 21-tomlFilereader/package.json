@@ -1,0 +1,7 @@
+{
+  "name": "tomlFileReader",
+  "version": "0.0.0",
+  "dependencies": {
+    "toml": "2.3.0"
+  }
+}

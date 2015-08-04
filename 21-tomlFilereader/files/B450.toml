@@ -1,0 +1,17 @@
+name = "B450"
+
+[doku]
+beschreibung = '''
+Dies ist eine kurze Beschreibung
+         mit Zeilenumbrüchen
+und Sonderzeichen'''
+anmerkung = """
+irgendwas kurzes
+
+mit Zeilenumbrüchen
+    und einzügen
+"""
+
+[version]
+aktuell = 1.7
+produktiv = 1.5
