@@ -1,6 +1,5 @@
-name = "B450"
-
 [doku]
+name = "B450"
 beschreibung = '''
 Dies ist eine kurze Beschreibung
          mit Zeilenumbrüchen
@@ -11,6 +10,7 @@ irgendwas kurzes
 mit Zeilenumbrüchen
     und einzügen
 """
+entladedatum = '2015-08-04'
 
 [version]
 aktuell = 1.7

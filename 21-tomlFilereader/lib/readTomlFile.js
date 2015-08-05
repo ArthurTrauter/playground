@@ -20,7 +20,9 @@
 
   console.log('data.doku.beschreibung: ', data.doku.beschreibung);
   console.log("\n\ndata: ", data);
+  console.log("\n\ndata.doku.name: ", data.doku.name);
   console.log("\n\ndata.doku.anmerkung: ", data.doku.anmerkung);
+  console.log("\n\ndata.doku.entladedatum: ", data.doku.entladedatum);
 
 
 }());
