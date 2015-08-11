@@ -1,0 +1,17 @@
+{
+  "name": "polymer-todo-app",
+  "version": "0.0.0",
+  "description": "Example polymer-todo-app see https://scotch.io/tutorials/build-a-real-time-polymer-to-do-app",
+  "authors": [
+    "Arthur Trauter <arthur.trauter@mannheimer.de>"
+  ],
+  "keywords": [
+    "polymer",
+    "todo",
+    "app"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.13.3"
+  }
+}

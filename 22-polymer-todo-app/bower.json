@@ -1,0 +1,28 @@
+{
+  "name": "22-polymer-todo-app",
+  "main": "index.js",
+  "description": "Example polymer-todo-app see https://scotch.io/tutorials/build-a-real-time-polymer-to-do-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ArthurTrauter/playground",
+  "authors": [
+    "Arthur Trauter <arthur.trauter@mannheimer.de>"
+  ],
+  "moduleType": [
+    "es6",
+    "node",
+    "yui"
+  ],
+  "keywords": [
+    "polymer",
+    "todo",
+    "app"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

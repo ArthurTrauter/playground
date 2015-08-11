@@ -1,0 +1,38 @@
+<head>
+  <link href="../polymer/polymer.html" rel="import">
+  <link href="../elements/todo-element.html" rel="import">
+  <link href="../paper-drawer-panel/paper-drawer-panel.html" rel="import">
+  <link href="../paper-header-panel/paper-header-panel.html" rel="import">
+  <link href="../paper-toolbar/paper-toolbar.html" rel="import">
+  <link href="../paper-icon-button/paper-icon-button.html" rel="import">
+  <link href="../paper-material/paper-material.html" rel="import">
+  <link href="../paper-menu/paper-menu.html" rel="import">
+  <link href="../paper-item/paper-item.html" rel="import">
+  <link href="../paper-input/paper-input.html" rel="import">
+  <link href="../iron-icons/iron-icons.html" rel="import">
+  ...
+</head>
+
+<dom-module id="todo-app">
+  <style>
+    <div style="border-left: 1px solid #ccc;"> <!-- To create a new Todo --> <paper-material id="todoEntry" elevation="2"> <paper-input id="tTask" label="Task"></paper-input> <paper-input id="tUser" char-counter label="Username" maxlength="16"></paper-input> <paper-fab icon="icons:add" on-tap="postTask"></paper-fab> </paper-material> <div id="todos"> <template is="dom-if" if="{{!todo.length}}"> <paper-material> <paper-item>No Tasks remain. Updates are Real-Time so stay tuned!</paper-item> </paper-material> </template> <template id="tasks" is="dom-repeat" items="{{todo}}"> <todo-element user="{{item.user}}" task="{{item.task}}" rid="{{item.rid}}"></todo-element> </template> </div> </div>
+  </style>
+  <template>
+    <paper-menu class="list">
+      <template if="{{!done.length}}" is="dom-if">
+        <paper-material>
+          <paper-item>Completed tasks will appear here!</paper-item>
+        </paper-material>
+      </template>
+      <template id="done" is="dom-repeat" items="{{done}}">
+        <paper-item>{{item.task}}
+          <i style="margin-left: 5px;">{{item.user}}</i>
+        </paper-item>
+      </template>
+    </paper-menu>
+  </template>
+</dom-module>
+
+<script>
+...
+</script>
