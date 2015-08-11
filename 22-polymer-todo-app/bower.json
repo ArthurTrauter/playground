@@ -36,6 +36,7 @@
     "iron-input": "polymerelements/iron-input#^1.0.0",
     "paper-checkbox": "polymerelements/paper-checkbox#^1.0.1",
     "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.3",
-    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4"
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4",
+    "pubnub-element": "~4.0.1"
   }
 }
