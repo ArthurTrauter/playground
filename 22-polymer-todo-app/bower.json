@@ -37,6 +37,8 @@
     "paper-checkbox": "polymerelements/paper-checkbox#^1.0.1",
     "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.3",
     "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4",
-    "pubnub-element": "~4.0.1"
+    "pubnub-element": "~4.0.1",
+    "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.3",
+    "paper-item": "PolymerElements/paper-item#~1.0.2"
   }
 }
