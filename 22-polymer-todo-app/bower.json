@@ -24,5 +24,18 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-icons": "polymerelements/iron-icons#~1.0.3",
+    "paper-menu": "polymerelements/paper-menu#~1.1.0",
+    "paper-fab": "polymerelements/paper-fab#~1.0.3",
+    "paper-button": "polymerelements/paper-button#~1.0.3",
+    "paper-drawer-panel": "polymerelements/paper-drawer-panel#~1.0.3",
+    "paper-input": "polymerelements/paper-input#~1.0.10",
+    "iron-input": "polymerelements/iron-input#^1.0.0",
+    "paper-checkbox": "polymerelements/paper-checkbox#^1.0.1",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.3",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4"
+  }
 }
