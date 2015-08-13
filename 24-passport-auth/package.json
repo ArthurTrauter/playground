@@ -1,6 +1,7 @@
 {
   "name": "passport-auth",
   "version": "0.0.0",
+  "description": "see passport-auth example https://scotch.io/tutorials/easy-node-authentication-setup-and-local",
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
