@@ -7,17 +7,19 @@
   var mongoose = require('mongoose');
   var passport = require('passport');
   var flash = require('connect-flash');
+  var config = require('config');
 
   var morgan = require('morgan');
   var cookieParser = require('cookie-parser');
   var bodyParser = require('body-parser');
   var session = require('express-session');
 
-  var configDB = require('./config/database.js');
+  // var configDB = require('./config/database.js');
   var routes = require('./app/routes.js');
 
   // configuration ===============================================================
-  mongoose.connect(configDB.url); // connect to our database
+  // mongoose.connect(configDB.url); // connect to our database
+  mongoose.connect(config.db.url); // connect to our database
 
   // require('./config/passport')(passport); // pass passport for configuration
 
