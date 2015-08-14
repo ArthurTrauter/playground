@@ -30,7 +30,12 @@
     });
 
     // process the signup form
-    // app.post('/signup', do all our passport stuff here);
+    app.post('/signup', passport.authenticate('local-signup', {
+      successRedirect : '/profile',
+      failureRedirect : '/signup',
+      // allow flash messages
+      failureFlash : true
+    }));
 
     // PROFILE SECTION
     // we will want this protected so you have to be logged in to visit

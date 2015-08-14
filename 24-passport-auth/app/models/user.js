@@ -2,7 +2,7 @@
   'use strict';
 
   var mongoose = require('mongoose');
-  var bcrypt = require('bcrypt');
+  var bcrypt = require('bcrypt-nodejs');
 
   // define shema for our user model
   var userSchema = mongoose.Schema({
@@ -34,12 +34,12 @@
 
   // generating a hash
   userSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(pasword, bcrypt.genSaltSync(8), null);
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   };
 
   // generating a hash
   userSchema.methods.validPasswod = function(password) {
-    return bcrypt.compareSync(pasword, this.local.password);
+    return bcrypt.compareSync(password, this.local.password);
   };
 
   module.exports = mongoose.model('User', userSchema);
