@@ -18,7 +18,12 @@
     });
 
     // process the login form
-    // app.post('/login', do all our passport stuff here);
+    app.post('/login', passport.authenticate('local-login', {
+      successRedirect: '/profile',
+      failureRedirect: '/login',
+      // allow flash messages
+      failureFlash: true
+    }));
 
     // SIGNUP (show the signup form)
     app.get('/signup', function(req, res) {
@@ -31,10 +36,10 @@
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-      successRedirect : '/profile',
-      failureRedirect : '/signup',
+      successRedirect: '/profile',
+      failureRedirect: '/signup',
       // allow flash messages
-      failureFlash : true
+      failureFlash: true
     }));
 
     // PROFILE SECTION
@@ -63,6 +68,6 @@
 
     // if they aren't redirect them to the home page
     res.redirect('/');
-  };
+  }
 
 }());

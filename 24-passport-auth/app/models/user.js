@@ -38,7 +38,7 @@
   };
 
   // generating a hash
-  userSchema.methods.validPasswod = function(password) {
+  userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
   };
 
