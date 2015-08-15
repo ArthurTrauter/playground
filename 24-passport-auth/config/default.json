@@ -1,5 +1,5 @@
 {
   "db": {
-    "url": "mongodb://localhost:27017/test"
+    "url": "mongodb://ds055802.mongolab.com:55802/playground"
   }
 }
