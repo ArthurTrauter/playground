@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="dateApp">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body ng-controller="DateCtrl">
+
+  Heutiges Datum:
+  {{ now | date:'dd. MMMM yyyy' }}<br>
+  Und die Uhrzeit:
+  {{ now | date:'HH:mm:ss' }}
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../scripts/dateApp.js"></script>
+
+</body>
+
+</html>
