@@ -16,4 +16,16 @@
     updateTime();
   });
 
+  dateApp.filter('truncate', function () {
+    return function (input, charCount) {
+      var output = input;
+
+      if (output.length > charCount) {
+        output = output.substr(0, charCount) + '...';
+      }
+
+      return output;
+    };
+  });
+
 }());
