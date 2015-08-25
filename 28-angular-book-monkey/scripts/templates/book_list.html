@@ -1,0 +1,9 @@
+<table class="bm-book-list">
+  <tbody>
+    <tr ng-repeat="book in books | orderBy: 'title'">
+      <td ng-bind="book.title"></td>
+      <td ng-bind="book.author"></td>
+      <td ng-bind="book.isbn"></td>
+    </tr>
+  </tbody>
+</table>
