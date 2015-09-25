@@ -1,0 +1,7 @@
+{
+  "name": "baconjs-example",
+  "version": "0.0.0",
+  "dependencies": {
+    "baconjs": "0.7.73"
+  }
+}
