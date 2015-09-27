@@ -13,7 +13,19 @@ var read = Bacon.fromNodeCallback(fs.readdir, directory)
     return Bacon.fromArray(value);
   })
   .flatMap(function (value) {
-    return console.log("flatMap2-value", value);
+    console.log("flatMap2-value", value);
+    return directory + '/' + value;
+  })
+  .flatMap(function (value) {
+    return Bacon.fromNodeCallback(fs.readFile, value, 'utf8');
+  })
+  .reduce([], function (seed, value) {
+     console.log("reduce4-value", JSON.parse(value));
+     seed.push(JSON.parse(value));
+     return seed;
+  })
+  .flatMap(function (value) {
+     return console.log("flatMap5-value", value);
   });
 
 read.onError(function (error) {
