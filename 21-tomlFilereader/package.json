@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "toml": "2.3.0"
+  },
+  "scripts": {
+    "start": "node lib\\readTomlVorlage.js"
   }
 }
