@@ -1,6 +1,7 @@
-// Methoden mit call aufrufen. Normalerweise verweist das this einer Methode auf das Objekt
-// aus dem heraus diese aufgerufen worden ist. Es ist mit einem Call auch möglich ein
-// abweichendes Objekt als Basis für den Methodenaufruf mitzugeben.
+// Methoden mit call aufrufen. Normalerweise verweist das this einer Methode
+// auf das Objekt aus dem heraus diese aufgerufen worden ist. Es ist mit
+// einem Call auch möglich ein abweichendes Objekt als Basis für den
+// Methodenaufruf mitzugeben
 var table1 = {
   entries: [],
   addEntry: function(key, value) {
