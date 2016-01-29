@@ -1,3 +1,7 @@
+// Verweise auf arguments sollten immer in einer Variable gespeichert werden
+// da jede aufgerufene funktion eine eigene arguments variable besitzt.
+// Um Fehler zu vermeiden sollte man arguments und sämtliche Verweise auf Arguments
+// in lokalen variablen speichern
 'use strict';
 
 var it = values(1, 7, 9, 13, 5, 10, 21);
