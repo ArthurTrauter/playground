@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var async = require('async');
+  // var async = require('async');
 
   function repeat(n, action) {
     for (var i = 0; i < n; i++) {
@@ -19,9 +19,11 @@
       f();
       end.push(Date.now());
     });
+
     for (var i = 0, n = start.length; i < n; i++) {
       timings[i] = end[i] - start[i];
     }
+
     return timings;
   }
 
