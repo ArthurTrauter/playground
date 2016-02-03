@@ -23,7 +23,7 @@ SpaceShip.prototype.left = function() {
 };
 
 SpaceShip.prototype.right = function() {
-  var maxWidth = this.scene.width - this.width;
+  var maxWidth = this.scene.width - this.width();
   this.moveTo(Math.min(this.x + 1, maxWidth), this.y);
 };
 
