@@ -5,8 +5,10 @@
 // müssen
 
 function User(name, pwd) {
+  var _name = name;
+
   this.toString = function() {
-    return "[name " + name + "]";
+    return "[name " + name + "], [_name " + _name + "]";
   };
   this.checkPassword = function(password) {
     return pwd === password;
@@ -15,6 +17,7 @@ function User(name, pwd) {
 
 var u = new User("trautear", "12345");
 
-console.log(u);
-console.log(u.toString());
-console.log(u.checkPassword("12345"));
+console.log("object-u      ", u);
+console.log("toString      ", u.toString());
+console.log("checkPassword ", u.checkPassword("12345"));
+console.log("extern call u._name ", u._name);
