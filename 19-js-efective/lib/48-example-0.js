@@ -1,34 +1,34 @@
-// Objekte sollten nicht während einer Aufzählung geändert werden
+// Objekte sollten nicht während einer Aufzählung durch eine for...in Schleife geändert werden!!!
 
 function Member(name) {
-   this.name = name;
-   this.friends = [];
+  this.name = name;
+  this.friends = [];
 }
 
-Member.prototype.inNetwork = function (other) {
-   var visited = {};
-   var workset = {};
+Member.prototype.inNetwork = function(other) {
+  var visited = {};
+  var workset = {};
 
-   workset[this.name] = this;
+  workset[this.name] = this;
 
-   for (var name in workset) {
-      if (workset.hasOwnProperty(name)) {
-         var member = workset[name];
-         delete workset[name];
-         if (name in visited) {
-            continue;
-         }
-         visited[name] = member;
-         if (member === other) { // Gefunden
-            return true;
-         }
-         member.friends.forEach(function (friend) {
-            workset[friend.name] = friend;
-         });
+  for (var name in workset) {
+    if (workset.hasOwnProperty(name)) {
+      var member = workset[name];
+      delete workset[name];
+      if (name in visited) {
+        continue;
       }
-   }
-   return false;
-}
+      visited[name] = member;
+      if (member === other) { // Gefunden
+        return true;
+      }
+      member.friends.forEach(function(friend) {
+        workset[friend.name] = friend;
+      });
+    }
+  }
+  return false;
+};
 
 var a = new Member("Alice");
 var b = new Member("Bob");
