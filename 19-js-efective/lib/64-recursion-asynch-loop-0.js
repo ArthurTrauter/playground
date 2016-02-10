@@ -19,9 +19,9 @@ function downloadAsync(url, onsuccess, onfailure) {
 
   request(options, function(error, response) {
     if (!error && response.statusCode === 200) {
-      onsuccess("statusCode " + response.statusCode);
+      return onsuccess("statusCode " + response.statusCode);
     } else {
-      onfailure(error);
+      return onfailure(error);
     }
   });
 
