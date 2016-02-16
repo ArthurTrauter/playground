@@ -1,24 +1,26 @@
 // Steuerung nebenläufiger Operationen mit einem Zähler
 
 function downloadAllAsync(urls, onsuccess, onerror) {
-  var result = [],
-    length = urls.length;
+  var pending = urls.length;
+  var result = [];
 
-  if (length === 0) {
+  if (pending === 0) {
     setTimeout(onsuccess.bind(null, result), 0);
     return;
   }
 
-  urls.forEach(function(url) {
+  urls.forEach(function(url, i) {
     downloadAsync(url, function(text) {
       if (result) {
         // Race Condition
-        result.push(text);
-        if (result.length === urls.length) {
+        result[i] = text; // speichert einene festen Index
+        pending--;
+        if (pending === 0) {
           onsuccess(result);
         }
       }
     }, function(error) {
+
       if (result) {
         result = null;
         onerror(error);
