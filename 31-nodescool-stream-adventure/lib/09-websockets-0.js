@@ -1,14 +1,14 @@
 // Write some browser code that uses the websocket-stream module to print
 // the string "hello"
 
-var through = require('through2');
-var ws = require('websocket-stream');
-
-var stream = ws('ws://localhost:8099');
-var tStream = through(function (line, enc, next) {
-   this.push(line.toString() + 'hello\n');
-   next();
-});
-
-stream.pipe(tStream);
-// tStream.pipe(stream);
+var websocket = require('websocket-stream');
+var ws = websocket('ws://localhost:8099');
+ws
+  .on('data', function(o) {
+    console.log('oho', o.toString());
+    // ws.destroy();
+  })
+  .on('error', function(err) {
+    console.error(err);
+  });
+ws.write(new Buffer('hello'));
