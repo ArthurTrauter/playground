@@ -3,6 +3,7 @@
 
 var websocket = require('websocket-stream');
 var ws = websocket('ws://localhost:8099');
+
 ws
   .on('data', function(o) {
     console.log('oho', o.toString());
@@ -11,4 +12,5 @@ ws
   .on('error', function(err) {
     console.error(err);
   });
-ws.write(new Buffer('hello'));
+
+ws.write('hello\n');

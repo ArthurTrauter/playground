@@ -5,8 +5,8 @@
 
 var through = require('through2');
 var trumpet = require('trumpet');
-
 var tr = trumpet();
+
 var file = __dirname + '/../files/10-input.html';
 
 var tStream = through(function(line, env, next) {
