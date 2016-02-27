@@ -52,7 +52,7 @@
     return new Promise(function(resolve, reject) {
 
       console.log('--- transformationMessageObj', transformationMessageObj);
-      item.addMessage(item._id, transformationMessageObj, function(err, value) {
+      Transformation.addMessage(item._id, transformationMessageObj, function(err, value) {
         if (err) {
           reject(err);
         } else {

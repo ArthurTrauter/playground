@@ -66,7 +66,7 @@
 
 
 
-  transformationSchema.methods.addMessage = function(_transformationId, _message, cb) {
+  transformationSchema.statics.addMessage = function(_transformationId, _message, cb) {
 
     var self = this;
 
@@ -93,13 +93,15 @@
 
     // push new message to transformation
     .then(function(data) {
+      console.log('_message', _message);
       data.messages.push(_message);
+      console.log('data', data);
 
       data.save(function(err, value) {
         if (err) {
           return cb(new Error("transformation couldn't be saved", err), null);
         }
-        return cb(null, self.messages);
+        return cb(null, value);
       });
     })
 
