@@ -100,7 +100,7 @@
 
 
 
-  transformationSchema.statics.addMessage = function(_transformationId, _message, cb) {
+  transformationSchema.statics.addMessage = function(_transformationId, _message) {
 
     var self = this;
 
