@@ -1,3 +1,13 @@
+// Work Queue Pattern
+// 
+// Jeder Task wurde immer nur einem Worker zugeordnet. Es können mehrere Worker
+// auf eine Queue horchen und bedienen sich sobald sie eine Nachricht in der Queue
+// entdecken die nicht bereits von einem anderen Worker allociert wurde.
+// Eine Nachricht wird aus der Queue ausgetragen wenn der worker die msg aknowledged!
+// Damit sich ein Worker mit allokieren und bearbeiten von Nachrichten übernimmt und
+// evtl. weitere verfügbare Worker nichts zu tun haben, kann der prefetch-parameter
+// gesetzt werden. Dieser definiert wieviele Messages gleichzeitig von einem Worker
+// allokiert werden dürfen
 (function() {
   'use strict';
 
@@ -27,7 +37,7 @@
   setTimeout(function() {
     context.close();
     process.exit(0);
-  }, 1000);
+  }, 500);
 
 
 

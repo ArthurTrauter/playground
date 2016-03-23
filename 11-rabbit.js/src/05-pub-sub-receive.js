@@ -3,19 +3,20 @@
 
   var context = require('rabbit.js').createContext('amqp://localhost');
 
-  let _q = 'events';
+  let _ex = 'logs';
   let _opts = {
-    persistent: true,
-    prefetch: 2
+    routing: 'fanout',
+    persistent: false
   }
+  let _topic = '';
 
 
 
   context.on('ready', function() {
 
-    var pull = context.socket('WORKER');
-    pull.connect(_q, function() {
-      console.log("Starting subscriber (WORKER)...");
+    var pull = context.socket('SUB');
+    pull.connect(_ex, _topic, function() {
+      console.log("Starting subscriber (SUB)...");
 
       pull.on('data', function(msg) {
         let secs = msg.toString().split('.').length - 1;
@@ -24,7 +25,7 @@
 
         setTimeout(function() {
           console.log(" [x] Done");
-          pull.ack(msg);
+          // pull.ack(msg);
         }, secs * 1000);
       });
     });
