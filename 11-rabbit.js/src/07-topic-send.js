@@ -1,27 +1,33 @@
-// MQ Routing Pattern
+// MQ Topic Pattern
 //
 // Eine Erweiterung des PUB-SUB-Patterns. Nun lassen sich alle Messages nicht nur Wahllos den einzelnen
-// Queues verteilen sondern per Routing-Key jeweils den passenden Queues zuordnen. Wenn man nur einen
-// key nimmt und sämtichen Queues zuordnet erreicht man wieder ein fanout scenario (PUB-SUB-Pattern)
+// Queues verteilen (fanout) oder per festen Routing-Key-Parameter abgreifen (direct) sondern per
+// Token-Key mit mehrfachen Zuordnungskriterien jeweils den passenden Queues zuordnen. Die Queus
+// bekommen Topics mit Wildcards;
 //
-// direct-exchange: published alle empfangenen messages per Routing-Key an die
+// * (genau ein topic parameter)
+// # (keines oder beliebig viele topic parameter)
+//
+// topic-parameter werden per . getrennt notiert
+//
+// topic-exchange: published alle empfangenen messages per topic-Key an die
 // entsprechende des keys zugeordneten Queues
 //
-// routing-key wird beim senden an die publish function übergeben. beim empfänger wird der
-// routing-key beim binding durch die connect-funktion definiert
+// topic-key wird beim senden an die publish function übergeben. beim empfänger wird der
+// topic-key samt wildcards beim binding durch die connect-funktion definiert
 (function() {
   'use strict';
 
   var context = require('rabbit.js').createContext('amqp://localhost');
 
-  let _ex = 'direct_logs';
+  let _ex = 'topic_logs';
   let _opts = {
-    routing: 'direct'
+    routing: 'topic'
   }
 
   let _args = process.argv.slice(2);
   let _msg = _args.slice(1).join(' ') || "Hello World!";
-  let _severity = (_args.length > 0) ? _args[0] : 'info';
+  let _severity = (_args.length > 0) ? _args[0] : 'anonymous.info';
 
 
 
