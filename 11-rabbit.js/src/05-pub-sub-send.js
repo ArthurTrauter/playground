@@ -4,7 +4,7 @@
 // definiert. Dieser muss einenen speziellen Exchange-Typ definieren
 //
 // fanout-exchange (ausschwärmen): published alle empfangenen messages an alle ihm bekannten queues
-//
+// ohne acknowledgement
 (function() {
   'use strict';
 
@@ -21,9 +21,9 @@
 
   context.on('ready', function() {
 
-    var pub = context.socket('SUB', _opts);
+    var pub = context.socket('PUB', _opts);
     pub.connect(_ex, function() {
-      console.log("Starting publisher (SUB)...");
+      console.log("Starting publisher (PUB)...");
 
       pub.publish(_topic, new Buffer(_msg), 'utf8');
       console.log("Message writen", _msg);
