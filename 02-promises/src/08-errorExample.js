@@ -16,3 +16,5 @@ xhr.httpGet(myUrls.shift())
   .catch(function(reason) {
     console.log('something went wrong: %s', reason);
   });
+
+let a = 'b'
