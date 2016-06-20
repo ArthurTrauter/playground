@@ -90,8 +90,7 @@
         it('returns all results', function(done) {
           const promise = Promise.all([
             new Promise(resolve => resolve(1)),
-            new Promise(resolve => resolve(2)),
-            new Promise(resolve => resolve(3))
+            new Promise(resolve => resolve(2))
           ]);
 
           promise
@@ -104,7 +103,8 @@
 
         it('is rejected if one rejects', function(done) {
           const promise = Promise.all([
-            new Promise(resolve => resolve(1))
+            new Promise(resolve => resolve(1)),
+            new Promise((resolve, reject) => reject(new Error('fail')))
           ]);
 
           promise
@@ -120,7 +120,7 @@
         const lateRejectedPromise = new Promise((resolve, reject) => setTimeout(
           reject, 100));
         const earlyResolvingPromise = new Promise(resolve => resolve('1st :)'));
-        const promise = Promise.race([lateRejectedPromise]);
+        const promise = Promise.race([lateRejectedPromise, earlyResolvingPromise]);
 
         promise
           .then(value => {
@@ -133,7 +133,7 @@
       it('if one of the given promises rejects first, the returned promise is rejected',
         function(done) {
           const earlyRejectedPromise = new Promise((resolve, reject) => reject(
-            'I am a REJECTOR'));
+            'I am a rejector'));
           const lateResolvingPromise = new Promise(resolve => setTimeout(resolve, 10));
           const promise = Promise.race([earlyRejectedPromise, lateResolvingPromise]);
 
@@ -151,7 +151,7 @@
     describe('`Promise.resolve()` returns a resolving promise', function() {
 
       it('if no value given, it resolves with `undefined`', function(done) {
-        const promise = Promise.resolve;
+        const promise = Promise.resolve();
 
         promise
           .then(value => {
@@ -162,7 +162,7 @@
       });
 
       it('resolves with the given value', function(done) {
-        const promise = Promise.resolve();
+        const promise = Promise.resolve('quick resolve');
 
         promise
           .then(value => {
@@ -177,7 +177,7 @@
     describe('`Promise.reject()` returns a rejecting promise', function() {
 
       it('if no value given, it rejects with `undefined`', function(done) {
-        const promise = Promise.resolve();
+        const promise = Promise.reject();
 
         promise
           .then(() => done(new NotRejectedError()))
@@ -190,7 +190,7 @@
 
       it('the parameter passed to `reject()` can be used in the `.catch()`', function(
         done) {
-        const promise = Promise;
+        const promise = Promise.reject('quick reject');
 
         promise
           .then(() => done(new NotRejectedError()))
