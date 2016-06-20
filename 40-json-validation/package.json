@@ -1,0 +1,9 @@
+{
+  "name": "validation-modules-test",
+  "version": "0.0.0",
+  "description": "testing npm json validation modules",
+  "dependencies": {
+    "is-my-json-valid": "2.13.1",
+    "joi": "8.4.2"
+  }
+}
