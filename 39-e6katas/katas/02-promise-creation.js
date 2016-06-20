@@ -11,7 +11,7 @@
 
       it('using `Promise` as a function', function() {
         function callPromiseAsFunction() {
-          const Promise = function() {};
+          const fn = Promise();
           return fn;
         }
         assert.throws(callPromiseAsFunction);
@@ -70,7 +70,13 @@
       it(
         'must call `super()` in the constructor if it wants to inherit/specialize the behavior',
         function() {
-          class ResolvingPromise extends Promise {}
+          class ResolvingPromise extends Promise {
+            constructor() {
+              super(function (resolve) {
+                return resolve(true);
+              });
+            }
+          }
 
           return new ResolvingPromise();
         });
