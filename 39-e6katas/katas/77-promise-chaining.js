@@ -35,7 +35,7 @@
           // .then(removeMultipleSpaces)
           .then(string => removeMultipleSpaces(string))
           .then(actual => {
-            assert.equal(actual, 'one space between each word')
+            assert.equal(actual, 'one space between each word');
           });
       });
 

@@ -52,7 +52,7 @@
 
     describe('extending a `Promise`', function() {
 
-      it('using `class X extends Promise{}` is possible', function() {
+      it('using `class X extends Promise{}` is possible', function(done) {
         class MyPromise extends Promise {
           constructor(fn) {
             super(fn);
@@ -72,7 +72,7 @@
         function() {
           class ResolvingPromise extends Promise {
             constructor() {
-              super(function (resolve) {
+              super(function(resolve) {
                 return resolve(true);
               });
             }
