@@ -9,13 +9,21 @@
   class LexicallyBound {
 
     getFunction() {
+      return function() {
+        // return new LexicallyBound();
+        return this;
+      };
+    }
+
+    getArrayFunction() {
       return () => {
-        return new LexicallyBound();
+        // return new LexicallyBound();
+        return this;
       };
     }
 
     getArgumentsFunction() {
-      return function() {
+      return () => {
         return arguments;
       };
     }
@@ -26,7 +34,7 @@
 
     it('bound at definition time, use `=>` ', function() {
       var bound = new LexicallyBound();
-      var fn = bound.getFunction();
+      var fn = bound.getArrayFunction();
 
       assert.strictEqual(fn(), bound);
     });
