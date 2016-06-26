@@ -9,9 +9,10 @@
   describe('destructuring objects', () => {
 
     it('is simple', () => {
-      const x = {
+      const y = {
         x: 1
       };
+      const {x} = y;
       assert.equal(x, 1);
     });
 
@@ -22,7 +23,7 @@
           second: 42
         };
         const {
-          magic: [second]
+          magic: {second}
         } = {
           magic
         };
@@ -30,16 +31,16 @@
       });
       it('object and array', () => {
         const {
-          z: [x]
+          z: [y, x]
         } = {
           z: [23, 42]
         };
         assert.equal(x, 42);
       });
       it('array and object', () => {
-        const [, {
+        const [, [{
           lang
-        }] = [null, [{
+        }]] = [null, [{
           env: 'browser',
           lang: 'ES6'
         }]];
@@ -50,7 +51,7 @@
     describe('interesting', () => {
       it('missing refs become undefined', () => {
         const {
-          z
+          z: {z}
         } = {
           x: 1,
           z: 2
@@ -61,7 +62,7 @@
       it('destructure from builtins (string)', () => {
         const {
           substr
-        } = 1;
+        } = '1';
         assert.equal(substr, String.prototype.substr);
       });
     });
