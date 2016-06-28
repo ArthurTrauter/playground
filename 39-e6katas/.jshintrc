@@ -12,5 +12,6 @@
   "sub": true,
   "undef": true,
   "unused": true,
-  "esnext": true
+  "esnext": true,
+  "elision": true
 }

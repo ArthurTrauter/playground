@@ -18,11 +18,14 @@
           assert.equal(id, 42);
           assert.equal(name, 'Wolfram');
         };
+        console.log('hier');
         const user = {
-          name: 'Wolfram',
           id: 42
         };
-        fn(user);
+        const name = {
+          name: 'Wolfram'
+        };
+        fn(user, name);
       });
 
       it('multiple params from array/object', () => {
@@ -32,10 +35,10 @@
           assert.equal(name, 'Alice');
         };
         const users = [{
-          name: 'nobody'
-        }, {
           name: 'Alice',
           id: 42
+        }, {
+          name: 'nobody'
         }];
         fn(users);
       });
@@ -47,7 +50,7 @@
           assert.strictEqual(id, 23);
           assert.strictEqual(name, 'Bob');
         };
-        fn(23);
+        fn(23, 'Bob');
       });
 
       it('for a missing array value', () => {
@@ -55,15 +58,15 @@
           id: 23,
           name: 'Joe'
         };
-        const fn = ([user]) => {
+        const fn = ([user = defaultUser]) => {
           assert.deepEqual(user, defaultUser);
         };
         fn([]);
       });
 
       it('mix of parameter types', () => {
-        const fn = (id, [arr], {
-          obj
+        const fn = (id = 1, [arr = 2], {
+          obj = 3
         }) => {
           assert.equal(id, 1);
           assert.equal(arr, 2);
