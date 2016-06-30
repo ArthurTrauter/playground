@@ -9,7 +9,7 @@
   describe('spread with strings', () => {
 
     it('simply spread each char of a string', function() {
-      const [b, a] = [...
+      const [a, b] = [...
         'ab'
       ];
       assert.equal(a, 'a');
@@ -17,7 +17,7 @@
     });
 
     it('extracts each array item', function() {
-      const [a, , c] = ['a', ...
+      const [c, a, b] = ['a', ...
         '12'
       ];
       assert.equal(a, 1);
@@ -25,19 +25,23 @@
     });
 
     it('works anywhere inside an array (must not be last)', function() {
-      const letters = ['a', 'bcd', 'e', 'f'];
+      const letters = ['a', ...
+        'bcd', 'e', 'f'
+      ];
       assert.equal(letters.length, 6);
     });
 
     it('dont confuse with the rest operator', function() {
-      const [...rest] = ['1234', ...
+      const [...rest] = [...
+        '1234', ...
         '5'
       ];
       assert.deepEqual(rest, [1, 2, 3, 4, 5]);
     });
 
     it('passed as function parameter', function() {
-      const max = Math.max(12345);
+      const max = Math.max(...
+        '12345');
       assert.deepEqual(max, 5);
     });
 
