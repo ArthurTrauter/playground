@@ -15,7 +15,7 @@
 
       it('a static method just has the prefix `static`', () => {
         class TestFactory {
-          makeTest() {
+          static makeTest() {
             return new UnitTest();
           }
         }
@@ -24,7 +24,7 @@
       });
 
       it('the method name can be dynamic/computed at runtime', () => {
-        const methodName = 'makeTest';
+        const methodName = 'createTest';
         class TestFactory {
           static[methodName]() {
             return new UnitTest();
@@ -38,7 +38,7 @@
     describe('for accessors', () => {
       it('a getter name can be static, just prefix it with `static`', () => {
         class UnitTest {
-          get testType() {
+          static get testType() {
             return 'unit';
           }
         }
@@ -49,7 +49,7 @@
       it('even a static getter name can be dynamic/computed at runtime', () => {
         const type = 'test' + 'Type';
         class IntegrationTest {
-          get type() {
+          static get[type]() {
             return 'integration';
           }
         }

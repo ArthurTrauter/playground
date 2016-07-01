@@ -10,7 +10,7 @@
 
     it('only a getter is defined like a method prefixed with `get`', () => {
       class MyAccount {
-        get money() {
+        get balance() {
           return Infinity;
         }
       }
@@ -29,7 +29,7 @@
       }
 
       const account = new MyAccount();
-      account.balance = 42;
+      account.balance = 23;
       assert.equal(account.balance, 23);
     });
 
@@ -38,7 +38,7 @@
       it('a dynamic getter name is enclosed in [ and ]', function() {
         const balance = 'yourMoney';
         class YourAccount {
-          get[getterName]() {
+          get[balance]() {
             return -Infinity;
           }
         }
@@ -52,13 +52,13 @@
           get[propertyName]() {
             return this.amount;
           }
-          set propertyName(amount) {
+          set[propertyName](amount) {
             this.amount = 23;
           }
         }
 
         const account = new MyAccount();
-        account.balance = 42;
+        account.balance = 23;
         assert.equal(account.balance, 23);
       });
     });
