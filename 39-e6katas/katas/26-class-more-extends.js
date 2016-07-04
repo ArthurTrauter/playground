@@ -9,7 +9,7 @@
   describe('class can inherit from another', () => {
 
     it('extend an `old style` "class", a function, still works', () => {
-      let A;
+      class A {};
       class B extends A {}
 
       assert.equal(new B() instanceof A, true);
@@ -19,11 +19,11 @@
       class A {}
       class B extends A {}
       it('A is the prototype of B', () => {
-        const isIt = A.isPrototypeOf(null);
+        const isIt = A.isPrototypeOf(B);
         assert.equal(isIt, true);
       });
       it('A`s prototype is also B`s prototype', () => {
-        const proto = B;
+        const proto = Object.getPrototypeOf(B);
         // Remember: don't touch the assert!!! :)
         assert.equal(A.prototype.isPrototypeOf(proto), true);
       });
