@@ -7,6 +7,14 @@
     <script src="libs/react.js"></script>
     <script src="libs/react-dom.js"></script>
     <script src="libs/browser.min.js"></script>
+    <style>
+      .valid {
+        background-color: #a5d6a7;
+      }
+      .invalid {
+        background-color: #ffcdd2;
+      }
+    </style>
   </head>
 
   <body>
@@ -30,6 +38,13 @@
 
       onGreetClicked(event) {
         alert(`Hello, ${this.state.greeting}`);
+        this.setState({
+          greeting: ''
+        });
+
+        if (this.inputField) {
+          this.inputField.focus();
+        }
       }
 
       getCharsRemaining() {
@@ -52,11 +67,15 @@
           <div>
             Greeting:&nbsp;
             <input
+              className={greetingValid?'valid':'invalid'}
               value={this.state.greeting}
-              onChange={(e)=>this.onGreetingChange(e)}>
+              onChange={(e)=>this.onGreetingChange(e)}
+              ref={(c)=>this.inputField = c}>
             </input>
 
-            <span>{this.getCharsRemaining()}</span>
+            <span style=
+              {{color:this.hasRemainingChars()?'green':'red'}}>
+              {this.getCharsRemaining()}</span>
 
             <button
               disabled={!greetingValid}
