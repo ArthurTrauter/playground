@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>greetMe</title>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/browser.min.js"></script>
+    <style>
+      .valid {
+        background-color: lightgreen;
+      }
+      .invalid {
+        background-color: #ffcdd2;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="myMountPoint"></div>
+</body>
+
+<script type="text/babel">
+  class Greeter extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        greeting: ""
+      };
+    }
+
+    onGreetingChange(event) {
+      this.setState({
+        greeting: event.target.value
+      });
+    }
+
+    onPushButton() {
+      alert("Einen wunderschönen guten Morgen, " + this.state.greeting + "!");
+      this.setState({
+        greeting: ""
+      });
+
+      if (this.inputField) {
+        this.inputField.focus();
+      }
+    }
+
+    getRemainingChars() {
+      return this.props.maxLength - this.state.greeting.length;
+    }
+
+    isInputValid() {
+      return this.state.greeting.length > 0 &&
+        this.getRemainingChars() > 0;
+    }
+
+    render() {
+      const inputValid = this.isInputValid();
+
+      return (
+        <div>
+          Dein Name:&nbsp;
+            <input
+              className={inputValid?'valid':'invalid'}
+              value={this.state.greeting}
+              onChange={(e)=>this.onGreetingChange(e)}
+              ref={(c)=>this.inputField = c}>
+            </input>
+
+            <span style={{color:this.getRemainingChars()>0?'green':'red'}}>
+              {this.getRemainingChars()}
+            </span>
+
+            <button
+              disabled={!inputValid}
+              onClick={()=>this.onPushButton()}
+            >Drücke mich!</button>
+        </div>
+      )
+    }
+  }
+
+  let mountElement = document.getElementById('myMountPoint');
+  ReactDOM.render(
+    <Greeter maxLength={10}/>,
+    mountElement
+  );
+</script>
+
+</html>
