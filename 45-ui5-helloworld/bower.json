@@ -1,0 +1,26 @@
+{
+  "name": "ui5-helloworld",
+  "homepage": "https://github.com/ArthurTrauter/playground",
+  "authors": [
+    "Arthur Trauter <arthur.trauter@sap.com>"
+  ],
+  "description": "ui5 helloworld example",
+  "main": "index.html",
+  "keywords": [
+    "ui5"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "openui5-sap.ui.core": "openui5/packaged-sap.ui.core#~1.46.4",
+    "openui5-sap.m": "openui5/packaged-sap.m#~1.46.4",
+    "openui5-themelib_sap_belize": "openui5/packaged-themelib_sap_belize#^1.46.4"
+  }
+}

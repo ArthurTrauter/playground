@@ -1,5 +1,8 @@
 {
   "name": "qunitjs-example",
   "version": "1.0.0",
-  "description": "QUnit.Js Example"
+  "description": "QUnit.Js Example",
+  "dependencies": {
+    "sinon": "1.17.7"
+  }
 }
