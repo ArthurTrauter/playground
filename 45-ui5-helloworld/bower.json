@@ -5,7 +5,7 @@
     "Arthur Trauter <arthur.trauter@sap.com>"
   ],
   "description": "ui5 helloworld example",
-  "main": "index.html",
+  "main": "./webapp/index.html",
   "keywords": [
     "ui5"
   ],
