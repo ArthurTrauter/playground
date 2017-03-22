@@ -1,0 +1,24 @@
+{
+  "name": "46-karma",
+  "version": "0.0.1",
+  "description": "only an test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "karma",
+    "test"
+  ],
+  "author": "Arthur Trauter <arthur.trauter@googlemail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-qunit": "^1.2.1",
+    "qunitjs": "^2.2.1"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
