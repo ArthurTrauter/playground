@@ -18,13 +18,7 @@
 			});
 		});
 	});
-	Queue.addPromise(function() {
-		return setTimeout(function() {
-			iCounter++;
-			console.log("synch call" + iCounter);
-		}, 250);;
-	})
-	
+
 	Queue.execPromiseStack()
 	
 	.then(function() {
