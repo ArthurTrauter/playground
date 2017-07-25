@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>Mobile App in 23 Seconds Example</title>
+
+	<script src="http://veui5infra.dhcp.wdf.sap.corp:8080/sapui5/resources/sap-ui-core.js" 
+		id="sap-ui-bootstrap"
+		data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.commons" 
+		data-sap-ui-theme="sap_bluecrystal">
+	</script>
+	
+	<script type="text/javascript">
+		sap.ui.controller("my.own.controller", {
+			doSomething: function() {
+				alert("Hello World!");
+			}
+		});
+		
+		// define a new (simple) View type
+		// ...alternatively this can be done in an XML file without JavaScript!
+		sap.ui.jsview("my.own.view", {
+
+			// define the (default) controller type for this View
+		getControllerName: function() {
+				return "my.own.controller";
+			},
+
+			// defines the UI of this View
+			createContent: function(oController) {
+				// button text is bound to Model, "press" action is bound to Controller's event handler
+				return oForm;
+			}
+		});
+		
+		jQuery.sap.initMobile();
+			
+		var oForm = new sap.ui.layout.form.Form("oForm");
+		var oGridLay = new sap.ui.layout.form.GridLayout( { singleColumn : true});
+
+		oForm.addFormContainer( new sap.ui.layout.form.FormContainer({
+			formElements : [
+				new sap.ui.layout.form.FormElement({
+					fields : [
+						new sap.ui.commons.Label({text : "First Name" ,
+							layoutData: new sap.ui.layout.form.GridElementData({ hCells: "1"})}),
+						new sap.ui.commons.TextField({id : "First", 
+							layoutData: new sap.ui.layout.form.GridElementData({ hCells: "2"})})
+					]})
+		] }));
+	
+ 
+		oForm.addFormContainer( new sap.ui.layout.form.FormContainer({ 
+			formElements : [
+			  new sap.ui.layout.form.FormElement({
+		  
+				 fields : [    
+					new sap.ui.commons.Label({text : "Second Name",
+						layoutData: new sap.ui.layout.form.GridElementData({ hCells: "1"})}),
+					new sap.ui.commons.TextField({id : "Sec", 
+						layoutData: new sap.ui.layout.form.GridElementData({ hCells: "2"})})
+				]
+			})]
+		}));
+
+		oForm.addFormContainer( new sap.ui.layout.form.FormContainer({ 
+			formElements : [
+				new sap.ui.layout.form.FormElement({
+					fields : [
+						new sap.ui.commons.Label({text : "Address",
+							layoutData: new sap.ui.layout.form.GridElementData({ hCells: "1"})}),
+						new sap.ui.commons.TextField({id : "Third", 
+							layoutData: new sap.ui.layout.form.GridElementData({ hCells: "4"})})
+					]
+			  })]
+		}));
+		
+		oForm.setLayout(oGridLay);
+
+		var myView = sap.ui.view({type:sap.ui.core.mvc.ViewType.JS, viewName:"my.own.view"});
+
+		var app = new sap.m.App("myApp"); 
+		app.addPage(myView);
+
+		app.placeAt('content');  
+	</script>
+
+</head>
+<body class='sapUiBody'>
+	<div id='content' style="height:100%"></div>
+</body>
+</html>
