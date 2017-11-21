@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Index</title>
+		<style>
+			app-drawer {
+				display: flex;
+			}
+			panel-item {
+				transition: opacity 400ms ease-in-out;
+				opacity: 0.3;
+				flex: 1;
+				text-align: center;
+				border-radius: 50%;
+			}
+			panel-item:hover {
+				opacity: 1.0;
+				background: rgb(255, 0, 255);
+				color: white;
+			}
+			app-panel > panel-item {
+				padding: 5px;
+				list-style: none;
+				margin: 0 7px;
+			}
+			app-drawer:not(:defined) {
+				/* Pre-style, give layout, replicate app-drawer's eventual styles, etc. */
+				display: inline-block;
+				height: 100vh;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+			}
+		</style>
+
+		<!-- <script src="bower_components/platform/platform.js"></script> -->
+		<script src="bower_components/webcomponentsjs/webcomponents-hi.js"></script>
+
+		<script type="text/javascript">
+			let tmpl = document.createElement('template');
+			tmpl.innerHTML = `
+			<style>:host { ... }</style> <!-- look ma, scoped styles -->
+			<b>I'm in shadow dom!</b>
+			<slot></slot>`;
+
+			customElements.define('x-foo-shadowdom', class extends HTMLElement {
+				constructor() {
+					super(); // always call super() first in the ctor.
+
+					// Attach a shadow root to the element.
+					let shadowRoot = this.attachShadow({mode: 'open'});
+					shadowRoot.appendChild(tmpl.content.cloneNode(true));
+				}
+			});
+
+			let tmpl1 = document.querySelector('#x-foo-from-template');
+			// If your code is inside of an HTML Import you'll need to change the above line to:
+			// let tmpl = document.currentScript.ownerDocument.querySelector('#x-foo-from-template');
+
+			customElements.define('x-foo-from-template', class extends HTMLElement {
+				constructor() {
+					super(); // always call super() first in the ctor.
+					let shadowRoot = this.attachShadow({mode: 'open'});
+					shadowRoot.appendChild(tmpl1.content.cloneNode(true));
+				}
+			});
+
+
+			class AppDrawer extends HTMLElement {
+
+			// A getter/setter for an open property.
+			get open() {
+				return this.hasAttribute('open');
+			}
+
+			set open(val) {
+				// Reflect the value of the open property as an HTML attribute.
+				if (val) {
+					this.setAttribute('open', '');
+				} else {
+					this.removeAttribute('open');
+				}
+				this.toggleDrawer();
+			}
+
+			// A getter/setter for a disabled property.
+			get disabled() {
+				return this.hasAttribute('disabled');
+			}
+
+			set disabled(val) {
+				// Reflect the value of the disabled property as an HTML attribute.
+				if (val) {
+					this.setAttribute('disabled', '');
+				} else {
+					this.removeAttribute('disabled');
+				}
+			}
+
+			// Can define constructor arguments if you wish.
+			constructor() {
+				// If you define a ctor, always call super() first!
+				// This is specific to CE and required by the spec.
+				super();
+
+				// Setup a click listener on <app-drawer> itself.
+				this.addEventListener('click', e => {
+					// Don't toggle the drawer if it's disabled.
+					if (this.disabled) {
+						return;
+					}
+					this.toggleDrawer();
+				});
+			}
+
+			toggleDrawer() {
+				console.log("toggle");
+			}
+			}
+
+			customElements.define('app-drawer', AppDrawer);
+
+			class FancyButton extends HTMLButtonElement {
+
+			constructor() {
+				super(); // always call super() first in the ctor.
+				this.addEventListener('click', e => this.drawRipple(e.offsetX, e.offsetY));
+			}
+
+			// Material design ripple animation.
+			drawRipple(x, y) {
+				let div = document.createElement('div');
+				div.classList.add('ripple');
+				this.appendChild(div);
+				div.style.top = `${y - div.clientHeight/2}px`;
+				div.style.left = `${x - div.clientWidth/2}px`;
+				div.style.backgroundColor = 'currentColor';
+				div.classList.add('run');
+				div.addEventListener('transitionend', e => div.remove());
+			}
+			}
+
+			customElements.define('fancy-button', FancyButton, {extends: 'button'});
+		</script>
+	</head>
+	<body>
+		<link rel="import" href="x-foo.html">
+		<x-foo></x-foo>
+		<x-foo-shadowdom></x-foo-shadowdom>
+
+		<template id="x-foo-from-template">
+			<style>
+			p { color: green; }
+		</style>
+		<p>I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.</p>
+		</template>
+
+		<x-foo-from-template></x-foo-from-template>
+
+		<app-drawer>
+		<panel-item>Do</panel-item>
+		<panel-item>Re</panel-item>
+		<panel-item>Mi</panel-item>
+		</app-drawer>
+
+		<button is="fancy-button">Fancy button!</button>
+	</body>
+</html>
