@@ -1,0 +1,13 @@
+<mvc:View height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	>
+	<Page title="todo-app">
+		<Text id="todo-text" text="mein text" />
+		<Button id="todo-button" text="myButton" />
+		<content>
+			<SearchField id="todo-searchfield" width="90%" class="sapUiSmallMargin" />
+		</content>
+	</Page>
+</mvc:View>

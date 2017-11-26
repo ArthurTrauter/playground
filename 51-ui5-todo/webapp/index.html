@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-        <meta charset="UTF-8">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+		<meta charset="UTF-8">
 
+		<title>test-todo-app</title>
 
-    </head>
-    <body>
-        <h1>ready...</h1>
-    </body>
+		<script id="sap-ui-bootstrap" type="text/javascript"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-libs="sap.m, sap.ui.layout"
+			data-sap-ui-resourceRoots='{"app": "."}'>
+		</script>
+
+		<script type="text/javascript">
+			sap.ui.getCore().attachInit(function() {
+				sap.ui.xmlview({ viewName: "app.todo" }).placeAt("content");
+			});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content" role="application">
+	</body>
 </html>

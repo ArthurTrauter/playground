@@ -1,0 +1,51 @@
+<mvc:View height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	controllerName="app.todo"
+	displayBlock="true">
+	<App>
+		<Page title="todo-app">
+			<subHeader>
+				<Toolbar>
+					<SearchField
+						id="todo-searchfield"
+						liveChange="onSearch"
+						width="100%" />
+				</Toolbar>
+			</subHeader>
+			<content>
+				<Input
+					id="todo-newtodo-input"
+					type="Text"
+					class="sapUiTinyMarginBeginEnd"
+					width="98%"
+					placeholder="Enter new todo item ..." />
+				<List
+					id="todo-list"
+					items="{cc>/ToDos}"
+					mode="MultiSelect"
+					includeItemInSelection="true">
+					<StandardListItem
+						title="{cc>title}"
+						iconDensityAware="false"
+						iconInset="false" />
+					<infoToolbar>
+						<Toolbar
+							active="true" >
+							<Label text="This is the info bar" />
+						</Toolbar>
+					</infoToolbar>
+				</List>
+			</content>
+			<footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/>
+				</OverflowToolbar>
+			</footer>
+
+		</Page>
+	</App>
+</mvc:View>

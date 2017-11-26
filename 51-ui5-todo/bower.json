@@ -18,6 +18,7 @@
   "dependencies": {
     "openui5-sap.ui.core": "^1.52.2",
     "openui5-sap.m": "^1.52.2",
-    "openui5-themelib_sap_belize": "^1.52.2"
+    "openui5-themelib_sap_belize": "^1.52.2",
+    "openui5-sap.ui.layout": "^1.52.2"
   }
 }
