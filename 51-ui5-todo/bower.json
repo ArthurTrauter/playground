@@ -1,0 +1,23 @@
+{
+  "name": "51-ui5-todo",
+  "description": "Todo application with ui5",
+  "main": "index.js",
+  "authors": [
+    "ArthurTrauter"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ArthurTrauter/playground",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "openui5-sap.ui.core": "^1.52.2",
+    "openui5-sap.m": "^1.52.2",
+    "openui5-themelib_sap_belize": "^1.52.2"
+  }
+}

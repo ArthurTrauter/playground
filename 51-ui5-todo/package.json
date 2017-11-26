@@ -1,0 +1,31 @@
+{
+  "name": "51-ui5-todo",
+  "version": "0.0.1",
+  "description": "Todo application with ui5",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "grunt lint && grunt test",
+    "start": "grunt serve",
+    "build": "grunt build",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurTrauter/playground.git"
+  },
+  "author": "ArthurTrauter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurTrauter/playground/issues"
+  },
+  "homepage": "https://github.com/ArthurTrauter/playground#readme",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-eslint": "^20.0.0",
+    "grunt-openui5": "^0.12.0"
+  }
+}
