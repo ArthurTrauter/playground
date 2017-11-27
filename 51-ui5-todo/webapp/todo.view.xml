@@ -39,11 +39,20 @@
 				</List>
 			</content>
 			<footer>
-				<OverflowToolbar>
-					<ToolbarSpacer/>
-					<Button type="Accept" text="Accept"/>
-					<Button type="Reject" text="Reject"/>
-				</OverflowToolbar>
+				<Bar>
+					<contentMiddle>
+						<SegmentedButton id="todo-segmented-button" selectedKey="all" selectionChange="onSelectionChange" class="sapMSegmentedButtonNoAutoWidth">
+							<items>
+								<SegmentedButtonItem text="All" key="all" />
+								<SegmentedButtonItem text="Active" key="active" />
+								<SegmentedButtonItem text="Completed" key="completed" />
+							</items>
+						</SegmentedButton>
+					</contentMiddle>
+					<contentRight>
+						<Button icon="sap-icon://delete" press="onPressClearCompleted" text="Clear completed"/>
+					</contentRight>
+				</Bar>
 			</footer>
 
 		</Page>
