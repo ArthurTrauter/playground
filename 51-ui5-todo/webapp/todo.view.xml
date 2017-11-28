@@ -5,7 +5,7 @@
 	controllerName="app.todo"
 	displayBlock="true">
 	<App>
-		<Page title="todo-app">
+		<Page title="{i18n>pageTitle}" backgroundDesign="Solid">
 			<subHeader>
 				<Toolbar>
 					<SearchField
@@ -20,7 +20,7 @@
 					type="Text"
 					class="sapUiTinyMarginBeginEnd"
 					width="98%"
-					placeholder="Enter new todo item ..." />
+					placeholder="{i18n>inputAdd}" />
 				<List
 					id="todo-list"
 					items="{cc>/ToDos}"
@@ -43,14 +43,14 @@
 					<contentMiddle>
 						<SegmentedButton id="todo-segmented-button" selectedKey="all" selectionChange="onSelectionChange" class="sapMSegmentedButtonNoAutoWidth">
 							<items>
-								<SegmentedButtonItem text="All" key="all" />
-								<SegmentedButtonItem text="Active" key="active" />
-								<SegmentedButtonItem text="Completed" key="completed" />
+								<SegmentedButtonItem text="{i18n>segmentedBtnAll}" key="all" />
+								<SegmentedButtonItem text="{i18n>segmentedBtnActive}" key="active" />
+								<SegmentedButtonItem text="{i18n>segmentedBtnCompleted}" key="completed" />
 							</items>
 						</SegmentedButton>
 					</contentMiddle>
 					<contentRight>
-						<Button icon="sap-icon://delete" press="onPressClearCompleted" text="Clear completed"/>
+						<Button icon="sap-icon://delete" press="onPressClearCompleted" text="{i18n>btnClean}"/>
 					</contentRight>
 				</Bar>
 			</footer>

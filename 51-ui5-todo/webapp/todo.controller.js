@@ -1,7 +1,12 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function(Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/model/resource/ResourceModel"
+], function(
+	Controller,
+	JSONModel,
+	ResourceModel
+) {
 	'use strict';
 
 	return Controller.extend('app.todo', {
@@ -11,8 +16,17 @@ sap.ui.define([
 					{ title: "Start this app", completed: true }
 				]
 			};
-			var ccModel = new sap.ui.model.json.JSONModel(oData);
+
+			// json model
+			var ccModel = new JSONModel(oData);
 			this.getView().setModel(ccModel, "cc");
+
+			// resource model
+			var oResourceModel = new sap.ui.model.resource.ResourceModel({
+				bundleName : "app.i18n.i18n"
+			});
+			this.getView().setModel(oResourceModel, "i18n");
+
 		},
 		onSelectionChange: function() {
 			alert("onSelectionChange");
