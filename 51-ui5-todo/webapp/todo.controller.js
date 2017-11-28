@@ -12,14 +12,14 @@ sap.ui.define([
 	return Controller.extend('app.todo', {
 		onInit: function() {
 			var oData = {
-				ToDos : [
+				todos : [
 					{ title: "Start this app", completed: true }
 				]
 			};
 
 			// json model
-			var ccModel = new JSONModel(oData);
-			this.getView().setModel(ccModel, "cc");
+			var oModel = new JSONModel(oData);
+			this.getView().setModel(oModel);
 
 			// resource model
 			var oResourceModel = new sap.ui.model.resource.ResourceModel({
@@ -36,6 +36,16 @@ sap.ui.define([
 		},
 		onSearch: function() {
 			alert("onSearch");
+		},
+		updateItemsLeftCount: function() {
+			var oModel = this.getView().getModel();
+			var aTodos = oModel.getProperty('/todos');
+
+			var iItemsLeftCount = aTodos.filter(function(oTodo) {
+				return oTodo.completed != true;
+			});
+
+			oModel.setProperty('/itemsLeftCount', iItemsLeftCount);
 		}
 	});
 });

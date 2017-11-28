@@ -21,19 +21,19 @@
 					class="sapUiTinyMarginBeginEnd"
 					width="98%"
 					placeholder="{i18n>inputAdd}" />
+				<!-- items="{ path: ‘/todos', events: { change: '.updateItemsLeftCount' } }" -->
 				<List
 					id="todo-list"
-					items="{cc>/ToDos}"
+					items="{/todos}"
 					mode="MultiSelect"
 					includeItemInSelection="true">
 					<StandardListItem
-						title="{cc>title}"
+						title="{title}"
 						iconDensityAware="false"
 						iconInset="false" />
 					<infoToolbar>
-						<Toolbar
-							active="true" >
-							<Label text="This is the info bar" />
+						<Toolbar active="true" >
+							<Label id="todo-itemsLeftLabel" text="{= ${/itemsLeftCount} === 1 ? ${/itemsLeftCount} + ' ' + ${i18n>item_left} : ${/itemsLeftCount} + ' ' + ${i18n>items_left} }'" />
 						</Toolbar>
 					</infoToolbar>
 				</List>
