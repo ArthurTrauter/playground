@@ -2,3 +2,7 @@ node_modules
 npm-debug.log
 dev.json
 bower_components
+
+# Apple OS
+.DS_Store
+**/.DS_Store
